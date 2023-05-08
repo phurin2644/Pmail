@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../models/mail.dart';
 
-
 class MailDetail extends StatelessWidget {
-  MailDetail(this.mail,{super.key});
+  MailDetail(this.mail, {super.key});
   final Mail mail;
   final List<String> menuTabItems = [
     'กำหนดเวลาส่ง',
@@ -13,7 +12,6 @@ class MailDetail extends StatelessWidget {
     'การตั้งค่า',
     'ความช่วยเหลือและความคิดเห็น',
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +72,11 @@ class MailDetail extends StatelessWidget {
         ],
       ),
       body: Column(children: [
-        Text(mail.title,style: TextStyle(fontSize: 17),)
+        Text(
+          mail.title,
+          style: TextStyle(fontSize: 17),
+        ),
+        Text('data')
       ]),
     );
   }
