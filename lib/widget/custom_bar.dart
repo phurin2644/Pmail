@@ -63,7 +63,7 @@ class CustomBar extends StatelessWidget {
                         onPressed: () {
                           showDialog(
                             context: context,
-                            builder: (context) => ShowDialog(),
+                            builder: (context) => const ShowDialog(),
                           );
                         },
                         child: const CircleAvatar(

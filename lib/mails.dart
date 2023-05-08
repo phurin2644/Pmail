@@ -18,6 +18,7 @@ class Mails extends StatefulWidget {
 class _MailsState extends State<Mails> {
   final GlobalKey<ScaffoldState> _drawerkey = GlobalKey();
   int _counterselect = 1;
+  int _selectedIndex = 0;
 
   void _setCounter(int value) {
     setState(() {
@@ -159,6 +160,15 @@ class _MailsState extends State<Mails> {
     if (_counterselect == 4) {
       List<Mail> selectedmail =
           _registerMails.where((mail) => mail.isStar).toList();
+      if (selectedmail.isNotEmpty) {
+        mainContent =
+            MailList(mails: selectedmail, onRemoveMail: _removeExpens);
+      }
+    }
+
+    if (_counterselect == 13) {
+      List<Mail> selectedmail =
+          _registerMails.where((mail) => mail.isDelete).toList();
       if (selectedmail.isNotEmpty) {
         mainContent =
             MailList(mails: selectedmail, onRemoveMail: _removeExpens);
@@ -420,11 +430,29 @@ class _MailsState extends State<Mails> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.videocam_outlined, size: 25),
-            label: 'Open Dialog',
+            label: 'videocam',
           ),
         ],
+        currentIndex: _selectedIndex,
         selectedItemColor: const Color.fromARGB(255, 43, 42, 42),
-        onTap: (value) {},
+        onTap: (int index) {
+          switch (index) {
+            case 0:
+              // only scroll to top when current index is selected.
+              if (_selectedIndex == index) {
+                mainContent;
+              }
+              break;
+            case 1:
+              mainContent;
+              break;
+          }
+          setState(
+            () {
+              _selectedIndex = index;
+            },
+          );
+        },
       ),
     );
   }

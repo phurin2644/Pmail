@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 
 class ShowDialog extends StatelessWidget {
   const ShowDialog({super.key});
+  
 
   @override
   Widget build(BuildContext context) {
     final keyboardSpace = MediaQuery.of(context).viewInsets.bottom;
+
+    
     return LayoutBuilder(builder: (ctx, contraints) {
       final width = contraints.maxWidth;
       return Dialog(

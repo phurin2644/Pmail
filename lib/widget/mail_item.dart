@@ -16,6 +16,10 @@ class _MailItemState extends State<MailItem> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        setState(() {
+          widget.mail.isRead = true;
+        });
+
         showDialog(
           context: context,
           builder: (context) => MailDetail(widget.mail),
@@ -94,12 +98,18 @@ class _MailItemState extends State<MailItem> {
                             ? FontWeight.normal
                             : FontWeight.bold,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                     Row(
                       children: [
                         Expanded(
                           flex: 1,
-                          child: Text(widget.mail.content),
+                          child: Text(
+                            widget.mail.content,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                         GestureDetector(
                           onTap: () {

@@ -20,9 +20,10 @@ class Mail {
   final String title;
   final String description;
   final String content;
-  final bool isRead;
+  bool isRead;
   final Color color;
   bool isStar = false;
+  bool isDelete = false;
  
   final DateTime date;
 }
